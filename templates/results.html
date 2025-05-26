@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% block title %}Search Results - Apt-Hunter{% endblock %}
+
+{% block content %}
+<div class="row mb-5">
+    <div class="col-12">
+        <div class="card border-0 bg-transparent">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center flex-wrap">
+                    <div class="mb-3 mb-md-0">
+                        <h2 class="mb-2">
+                            <i class="fas fa-list me-3 feature-icon"></i> 
+                            <span style="background: linear-gradient(135deg, var(--primary-color) 0%, var(--gold-accent) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Search Results</span>
+                        </h2>
+                        <p class="text-muted fs-5">
+                            <i class="fas fa-check-circle text-success me-2"></i>
+                            Found <strong class="text-primary">{{ total_count }}</strong> apartments matching your criteria
+                        </p>
+                    </div>
+                    <div class="d-flex gap-2 flex-wrap">
+                        <a href="/" class="btn btn-secondary">
+                            <i class="fas fa-arrow-left me-2"></i> New Search
+                        </a>
+                        <a href="/download/{{ filename }}" class="btn btn-success">
+                            <i class="fas fa-download me-2"></i> Download Excel
+                        </a>
+                        {% if classified_file %}
+                        <a href="/download/{{ classified_file }}" class="btn btn-primary">
+                            <i class="fas fa-brain me-2"></i> Download Classified
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0"><i class="fas fa-table me-2"></i> Apartment Listings</h5>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    {{ table|safe }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-5">
+    <div class="col-12">
+        <div class="card border-0 bg-light">
+            <div class="card-body text-center">
+                <i class="fas fa-info-circle text-primary me-2"></i>
+                <span class="text-muted">
+                    Click on apartment links to view detailed information on apartments.com
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Make apartment links open in new tab
+    const links = document.querySelectorAll('table a[href*="apartments.com"]');
+    links.forEach(link => {
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+    });
+    
+    // Add some styling to the table
+    const table = document.querySelector('table');
+    if (table) {
+        table.classList.add('table', 'table-striped', 'table-hover');
+        
+        // Style the header
+        const thead = table.querySelector('thead');
+        if (thead) {
+            thead.classList.add('table-dark');
+        }
+    }
+});
+</script>
+{% endblock %} 

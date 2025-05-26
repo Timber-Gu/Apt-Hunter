@@ -1,0 +1,401 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row">
+    <!-- Search Form -->
+    <div class="col-lg-8">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="mb-0"><i class="fas fa-search"></i> Search Parameters</h4>
+            </div>
+            <div class="card-body">
+                <form id="searchForm">
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <label for="city" class="form-label">
+                                <i class="fas fa-city me-2"></i> City
+                            </label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-city"></i></span>
+                                <input type="text" class="form-control" id="city" name="city" 
+                                       placeholder="e.g., Seattle" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <label for="state" class="form-label">
+                                <i class="fas fa-map-marker-alt me-2"></i> State
+                            </label>
+                            <select class="form-select" id="state" name="state" required>
+                                <option value="">Select State</option>
+                                <option value="WA">Washington</option>
+                                <option value="CA">California</option>
+                                <option value="NY">New York</option>
+                                <option value="TX">Texas</option>
+                                <option value="FL">Florida</option>
+                                <option value="IL">Illinois</option>
+                                <option value="PA">Pennsylvania</option>
+                                <option value="OH">Ohio</option>
+                                <option value="GA">Georgia</option>
+                                <option value="NC">North Carolina</option>
+                                <option value="MI">Michigan</option>
+                                <option value="NJ">New Jersey</option>
+                                <option value="VA">Virginia</option>
+                                <option value="WI">Wisconsin</option>
+                                <option value="AZ">Arizona</option>
+                                <option value="MA">Massachusetts</option>
+                                <option value="TN">Tennessee</option>
+                                <option value="IN">Indiana</option>
+                                <option value="MO">Missouri</option>
+                                <option value="MD">Maryland</option>
+                                <option value="CO">Colorado</option>
+                                <option value="MN">Minnesota</option>
+                                <option value="SC">South Carolina</option>
+                                <option value="AL">Alabama</option>
+                                <option value="LA">Louisiana</option>
+                                <option value="KY">Kentucky</option>
+                                <option value="OR">Oregon</option>
+                                <option value="OK">Oklahoma</option>
+                                <option value="CT">Connecticut</option>
+                                <option value="UT">Utah</option>
+                                <option value="IA">Iowa</option>
+                                <option value="NV">Nevada</option>
+                                <option value="AR">Arkansas</option>
+                                <option value="MS">Mississippi</option>
+                                <option value="KS">Kansas</option>
+                                <option value="NM">New Mexico</option>
+                                <option value="NE">Nebraska</option>
+                                <option value="WV">West Virginia</option>
+                                <option value="ID">Idaho</option>
+                                <option value="HI">Hawaii</option>
+                                <option value="NH">New Hampshire</option>
+                                <option value="ME">Maine</option>
+                                <option value="MT">Montana</option>
+                                <option value="RI">Rhode Island</option>
+                                <option value="DE">Delaware</option>
+                                <option value="SD">South Dakota</option>
+                                <option value="ND">North Dakota</option>
+                                <option value="AK">Alaska</option>
+                                <option value="VT">Vermont</option>
+                                <option value="WY">Wyoming</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <label for="max_price" class="form-label">
+                                <i class="fas fa-dollar-sign me-2"></i> Maximum Price
+                            </label>
+                            <div class="input-group">
+                                <span class="input-group-text">$</span>
+                                <input type="number" class="form-control" id="max_price" name="max_price" 
+                                       placeholder="1600" min="500" max="10000" step="50" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <label for="max_pages" class="form-label">
+                                <i class="fas fa-file-alt me-2"></i> Max Pages to Scrape
+                            </label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-file-alt"></i></span>
+                                <input type="number" class="form-control" id="max_pages" name="max_pages" 
+                                       placeholder="12" min="1" max="50" value="12" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="form-label">
+                            <i class="fas fa-bed me-2"></i> Bedroom Types
+                        </label>
+                        <div class="row g-3">
+                            <div class="col-md-3">
+                                <div class="form-check p-3 border rounded-3 h-100 text-center">
+                                    <input class="form-check-input" type="checkbox" value="Studio" id="studio" name="bedroom_types">
+                                    <label class="form-check-label d-block" for="studio">
+                                        <i class="fas fa-home d-block mb-2 text-muted"></i>
+                                        <strong>Studio</strong>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-check p-3 border rounded-3 h-100 text-center">
+                                    <input class="form-check-input" type="checkbox" value="1 bed" id="one_bed" name="bedroom_types">
+                                    <label class="form-check-label d-block" for="one_bed">
+                                        <i class="fas fa-bed d-block mb-2 text-muted"></i>
+                                        <strong>1 Bedroom</strong>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-check p-3 border rounded-3 h-100 text-center">
+                                    <input class="form-check-input" type="checkbox" value="2 bed" id="two_bed" name="bedroom_types">
+                                    <label class="form-check-label d-block" for="two_bed">
+                                        <i class="fas fa-bed d-block mb-2 text-muted"></i>
+                                        <strong>2 Bedroom</strong>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-check p-3 border rounded-3 h-100 text-center">
+                                    <input class="form-check-input" type="checkbox" value="3 bed" id="three_bed" name="bedroom_types">
+                                    <label class="form-check-label d-block" for="three_bed">
+                                        <i class="fas fa-bed d-block mb-2 text-muted"></i>
+                                        <strong>3+ Bedroom</strong>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <div class="card border-0 bg-light">
+                            <div class="card-body">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="classify" name="classify">
+                                    <label class="form-check-label" for="classify">
+                                        <i class="fas fa-robot me-2 text-primary"></i> 
+                                        <strong>Enable AI Neighborhood Classification</strong>
+                                        <small class="d-block text-muted mt-1">Get intelligent insights about apartment neighborhoods</small>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-4" id="openai_section" style="display: none;">
+                        <label for="openai_key" class="form-label">
+                            <i class="fas fa-key me-2"></i> OpenAI API Key
+                        </label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-key"></i></span>
+                            <input type="password" class="form-control" id="openai_key" name="openai_key" 
+                                   placeholder="sk-...">
+                        </div>
+                        <div class="form-text">
+                            <i class="fas fa-info-circle me-1"></i>
+                            Required for AI neighborhood classification. Your key is not stored.
+                        </div>
+                    </div>
+
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-primary btn-lg" id="searchBtn">
+                            <i class="fas fa-search"></i> Start Search
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Status Panel -->
+    <div class="col-lg-4">
+        <div class="card status-card">
+            <div class="card-header">
+                <h5 class="mb-0"><i class="fas fa-info-circle"></i> Search Status</h5>
+            </div>
+            <div class="card-body">
+                <div id="statusContent">
+                    <div class="text-center">
+                        <i class="fas fa-search feature-icon"></i>
+                        <p class="text-muted">Ready to search for apartments</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Features Card -->
+        <div class="card mt-3">
+            <div class="card-header">
+                <h5 class="mb-0"><i class="fas fa-star"></i> Features</h5>
+            </div>
+            <div class="card-body">
+                <ul class="list-unstyled">
+                    <li class="mb-2">
+                        <i class="fas fa-check text-success"></i> 
+                        Automated apartment scraping
+                    </li>
+                    <li class="mb-2">
+                        <i class="fas fa-check text-success"></i> 
+                        Customizable search filters
+                    </li>
+                    <li class="mb-2">
+                        <i class="fas fa-check text-success"></i> 
+                        Excel export functionality
+                    </li>
+                    <li class="mb-2">
+                        <i class="fas fa-check text-success"></i> 
+                        AI neighborhood classification
+                    </li>
+                    <li class="mb-2">
+                        <i class="fas fa-check text-success"></i> 
+                        Real-time progress tracking
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('searchForm');
+    const classifyCheckbox = document.getElementById('classify');
+    const openaiSection = document.getElementById('openai_section');
+    const statusContent = document.getElementById('statusContent');
+    const searchBtn = document.getElementById('searchBtn');
+    
+    let statusInterval;
+
+    // Show/hide OpenAI key field
+    classifyCheckbox.addEventListener('change', function() {
+        openaiSection.style.display = this.checked ? 'block' : 'none';
+    });
+
+    // Form submission
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Get bedroom types
+        const bedroomTypes = [];
+        document.querySelectorAll('input[name="bedroom_types"]:checked').forEach(function(checkbox) {
+            bedroomTypes.push(checkbox.value);
+        });
+        
+        if (bedroomTypes.length === 0) {
+            alert('Please select at least one bedroom type.');
+            return;
+        }
+        
+        // Prepare form data
+        const formData = {
+            city: document.getElementById('city').value,
+            state: document.getElementById('state').value,
+            max_price: parseInt(document.getElementById('max_price').value),
+            bedroom_types: bedroomTypes,
+            max_pages: parseInt(document.getElementById('max_pages').value),
+            classify: document.getElementById('classify').checked,
+            openai_key: document.getElementById('openai_key').value
+        };
+        
+        // Validate OpenAI key if classification is enabled
+        if (formData.classify && !formData.openai_key) {
+            alert('Please provide an OpenAI API key for neighborhood classification.');
+            return;
+        }
+        
+        // Start search
+        startSearch(formData);
+    });
+
+    function startSearch(formData) {
+        searchBtn.disabled = true;
+        searchBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Starting...';
+        
+        fetch('/search', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData)
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.error) {
+                throw new Error(data.error);
+            }
+            
+            // Start status polling
+            statusInterval = setInterval(updateStatus, 2000);
+            updateStatus();
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Error starting search: ' + error.message);
+            resetSearchButton();
+        });
+    }
+
+    function updateStatus() {
+        fetch('/status')
+        .then(response => response.json())
+        .then(data => {
+            updateStatusDisplay(data);
+            
+            if (!data.running) {
+                clearInterval(statusInterval);
+                resetSearchButton();
+            }
+        })
+        .catch(error => {
+            console.error('Status error:', error);
+        });
+    }
+
+    function updateStatusDisplay(status) {
+        let html = '';
+        
+        if (status.running) {
+            html = `
+                <div class="text-center mb-3">
+                    <div class="spinner-border" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>
+                <div class="progress mb-3">
+                    <div class="progress-bar" role="progressbar" style="width: ${status.progress}%" 
+                         aria-valuenow="${status.progress}" aria-valuemin="0" aria-valuemax="100">
+                        ${status.progress}%
+                    </div>
+                </div>
+                <p class="text-center mb-0">${status.message}</p>
+            `;
+        } else if (status.error) {
+            html = `
+                <div class="alert alert-danger">
+                    <i class="fas fa-exclamation-triangle"></i> 
+                    ${status.error}
+                </div>
+            `;
+        } else if (status.results_file) {
+            html = `
+                <div class="alert alert-success">
+                    <i class="fas fa-check-circle"></i> 
+                    Search completed!
+                </div>
+                <p><strong>Found:</strong> ${status.total_apartments} apartments</p>
+                <div class="d-grid gap-2">
+                    <a href="/results" class="btn btn-success">
+                        <i class="fas fa-eye"></i> View Results
+                    </a>
+                    <a href="/download/${status.results_file}" class="btn btn-primary">
+                        <i class="fas fa-download"></i> Download Excel
+                    </a>
+                    ${status.classified_file ? `
+                        <a href="/download/${status.classified_file}" class="btn btn-info">
+                            <i class="fas fa-download"></i> Download Classified
+                        </a>
+                    ` : ''}
+                </div>
+            `;
+        } else {
+            html = `
+                <div class="text-center">
+                    <i class="fas fa-search feature-icon"></i>
+                    <p class="text-muted">Ready to search for apartments</p>
+                </div>
+            `;
+        }
+        
+        statusContent.innerHTML = html;
+    }
+
+    function resetSearchButton() {
+        searchBtn.disabled = false;
+        searchBtn.innerHTML = '<i class="fas fa-search"></i> Start Search';
+    }
+});
+</script>
+{% endblock %} 

@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block title %}Error - Apt-Hunter{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+        <div class="card">
+            <div class="card-body text-center py-5">
+                <div class="mb-4">
+                    <i class="fas fa-exclamation-triangle feature-icon" style="font-size: 5rem; background: linear-gradient(135deg, var(--warning-color) 0%, #f97316 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"></i>
+                </div>
+                
+                <h3 class="card-title mb-4" style="background: linear-gradient(135deg, var(--error-color) 0%, #dc2626 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 600;">
+                    Oops! Something went wrong
+                </h3>
+                
+                <div class="alert alert-danger">
+                    <i class="fas fa-bug me-2"></i>
+                    <strong>Error:</strong> {{ error }}
+                </div>
+                
+                <p class="text-muted fs-5 mb-4">
+                    Don't worry, this happens sometimes. Here are a few things you can try:
+                </p>
+                
+                <div class="card border-0 bg-light mb-4">
+                    <div class="card-body">
+                        <ul class="list-unstyled text-start mb-0">
+                            <li class="mb-3 d-flex align-items-center">
+                                <i class="fas fa-wifi text-success me-3"></i> 
+                                <span>Check your internet connection</span>
+                            </li>
+                            <li class="mb-3 d-flex align-items-center">
+                                <i class="fas fa-search text-success me-3"></i> 
+                                <span>Verify your search parameters are valid</span>
+                            </li>
+                            <li class="mb-3 d-flex align-items-center">
+                                <i class="fas fa-chrome text-success me-3"></i> 
+                                <span>Make sure Chrome browser is installed</span>
+                            </li>
+                            <li class="mb-0 d-flex align-items-center">
+                                <i class="fas fa-key text-success me-3"></i> 
+                                <span>If using AI classification, check your OpenAI API key</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="d-flex gap-3 justify-content-center">
+                    <a href="/" class="btn btn-primary">
+                        <i class="fas fa-home me-2"></i> Go Back Home
+                    </a>
+                    <button onclick="window.history.back()" class="btn btn-secondary">
+                        <i class="fas fa-arrow-left me-2"></i> Go Back
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

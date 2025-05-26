@@ -83,5 +83,6 @@ def classify_excel_addresses():
     print(f"classified file: {OUTPUT_FILE}")
 
 
-classify_excel_addresses()
+if __name__ == "__main__":
+    classify_excel_addresses()
 
