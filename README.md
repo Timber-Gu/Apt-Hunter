@@ -50,7 +50,7 @@ Navigate to **http://localhost:5000** and start searching!
 
 ### AI Classification (Optional)
 1. Check **"Enable AI Neighborhood Classification"**
-2. Enter your **OpenAI API Key** ([Get one here](https://openai.com/api/))
+2. Enter your **OpenAI API Key** ([Get one here](https://openai.com/api/)) (You deploy this locally, no one can get your API, so don't worry)
 3. The tool will automatically classify apartments by neighborhood
 
 ### View Results
