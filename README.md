@@ -1,6 +1,6 @@
 # 🏠 Apt-Hunter
 
-A modern web-based apartment hunting tool that scrapes apartments.com and uses AI to classify neighborhoods. No more manual searching - just fill out a form and let the tool do the work!
+The author is a lazy person. That why I designed a modern web-based apartment hunting tool that scrapes apartments.com and uses AI to classify neighborhoods. No more manual searching - just fill out a form and let the tool do the work!
 
 ## ✨ Features
 
